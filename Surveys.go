@@ -2,6 +2,17 @@ package Surveys
 
 import "fmt"
 
+type Visibility string
+
+const (
+	Show Visibility = "show"
+	Hide            = "hide"
+)
+
+func (v Visibility) String() string {
+	return fmt.Sprintf("%s", string(v))
+}
+
 type StructureClass string
 
 const (
