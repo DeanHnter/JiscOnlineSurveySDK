@@ -28,35 +28,37 @@ const (
 	English LanguageClass = "en_GB"
 )
 
+type Run struct {
+	Class                       string `json:"class"`
+	AlertFrequency              int    `json:"alert_frequency"`
+	AlertLastUpdate             int    `json:"alert_last_update"`
+	ContactMessage              string `json:"contact_message"`
+	DiscourageSearchEngines     bool   `json:"discourage_search_engines"`
+	ExpectedResponses           int    `json:"expected_responses"`
+	ExternalTitle               string `json:"external_title"`
+	ID                          int    `json:"id"`
+	LoginMessage                string `json:"login_message"`
+	NotificationInviteBody      string `json:"notification_invite_body"`
+	NotificationInviteSubject   string `json:"notification_invite_subject"`
+	NotificationReminderBody    string `json:"notification_reminder_body"`
+	NotificationReminderSubject string `json:"notification_reminder_subject"`
+	PermitBackForth             bool   `json:"permit_back_forth"`
+	PermitFinishLater           bool   `json:"permit_finish_later"`
+	PermitResponsePrintout      bool   `json:"permit_response_printout"`
+	ShortName                   string `json:"short_name"`
+	ShowCompletionReceipt       bool   `json:"show_completion_receipt"`
+	ShowNumbering               bool   `json:"show_numbering"`
+	ShowProgress                bool   `json:"show_progress"`
+	Timezone                    int    `json:"timezone"`
+}
+
 type Survey struct {
 	Class         string `json:"class"`
 	ID            int    `json:"id"`
 	InternalTitle string `json:"internal_title"`
 	L10N          string `json:"l10n"`
-	Runs          []struct {
-		Class                       string `json:"class"`
-		AlertFrequency              int    `json:"alert_frequency"`
-		AlertLastUpdate             int    `json:"alert_last_update"`
-		ContactMessage              string `json:"contact_message"`
-		DiscourageSearchEngines     bool   `json:"discourage_search_engines"`
-		ExpectedResponses           int    `json:"expected_responses"`
-		ExternalTitle               string `json:"external_title"`
-		ID                          int    `json:"id"`
-		LoginMessage                string `json:"login_message"`
-		NotificationInviteBody      string `json:"notification_invite_body"`
-		NotificationInviteSubject   string `json:"notification_invite_subject"`
-		NotificationReminderBody    string `json:"notification_reminder_body"`
-		NotificationReminderSubject string `json:"notification_reminder_subject"`
-		PermitBackForth             bool   `json:"permit_back_forth"`
-		PermitFinishLater           bool   `json:"permit_finish_later"`
-		PermitResponsePrintout      bool   `json:"permit_response_printout"`
-		ShortName                   string `json:"short_name"`
-		ShowCompletionReceipt       bool   `json:"show_completion_receipt"`
-		ShowNumbering               bool   `json:"show_numbering"`
-		ShowProgress                bool   `json:"show_progress"`
-		Timezone                    int    `json:"timezone"`
-	} `json:"runs"`
-	TopContainer struct {
+	Runs          []Run  `json:"runs"`
+	TopContainer  struct {
 		Class                  string `json:"class"`
 		DataQuestionVisibility string `json:"data_question_visibility"`
 		ID                     int    `json:"id"`
