@@ -1,25 +1,31 @@
 package Surveys
 
-type Classes string
+type StructureClass string
 
 const (
-	SurveyClass     Classes = "Survey"
-	SurveyRun               = "SurveyRun"
-	Container               = "Container"
-	Page                    = "Page"
-	MultipleChoice          = "MultipleChoice"
-	SelectionOption         = "SelectionOption"
-	FreeText                = "FreeText"
-	MultipleAnswer          = "MultipleAnswer"
-	SelectionList           = "SelectionList"
-	DatePicker              = "DatePicker"
-	TimePicker              = "TimePicker"
-	DateTimePicker          = "DateTimePicker"
-	Scale                   = "Scale"
-	ScaleRow                = "ScaleRow"
-	Grid                    = "Grid"
-	GridRow                 = "GridRow"
-	Note                    = "Note"
+	SurveyClass     StructureClass = "Survey"
+	SurveyRun                      = "SurveyRun"
+	Container                      = "Container"
+	Page                           = "Page"
+	MultipleChoice                 = "MultipleChoice"
+	SelectionOption                = "SelectionOption"
+	FreeText                       = "FreeText"
+	MultipleAnswer                 = "MultipleAnswer"
+	SelectionList                  = "SelectionList"
+	DatePicker                     = "DatePicker"
+	TimePicker                     = "TimePicker"
+	DateTimePicker                 = "DateTimePicker"
+	Scale                          = "Scale"
+	ScaleRow                       = "ScaleRow"
+	Grid                           = "Grid"
+	GridRow                        = "GridRow"
+	Note                           = "Note"
+)
+
+type LanguageClass string
+
+const (
+	English LanguageClass = "en_GB"
 )
 
 type Survey struct {
