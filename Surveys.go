@@ -79,6 +79,15 @@ type Run struct {
 	Timezone                    int    `json:"timezone"`
 }
 
+type PageContainer struct {
+	Class                  string `json:"class"`
+	DataQuestionVisibility string `json:"data_question_visibility"`
+	ID                     int    `json:"id"`
+	Label                  string `json:"label"`
+	Mandatory              string `json:"mandatory"`
+	Title                  string `json:"title"`
+}
+
 type TopContainer struct {
 	Class                  string `json:"class"`
 	DataQuestionVisibility string `json:"data_question_visibility"`
