@@ -1,4 +1,4 @@
-package Surveys
+package main
 
 import "fmt"
 
@@ -10,6 +10,17 @@ const (
 )
 
 func (v Visibility) String() string {
+	return fmt.Sprintf("%s", string(v))
+}
+
+type JsonBool string
+
+const (
+	JsonTrue  JsonBool = "True"
+	JsonFalse JsonBool = "False"
+)
+
+func (v JsonBool) JBool() string {
 	return fmt.Sprintf("%s", string(v))
 }
 
@@ -81,22 +92,22 @@ type Run struct {
 
 type InnerContainer struct {
 	ShortTitle             string           `json:"short_title,omitempty"`
-	Class                  string           `json:"class"`
+	Class                  string           `json:"class,omitempty"`
 	DataQuestionVisibility string           `json:"data_question_visibility"`
-	Title                  string           `json:"title"`
+	Title                  string           `json:"title,omitempty"`
 	DataIdentifier         string           `json:"data_identifier,omitempty"`
 	Default                string           `json:"default,omitempty"`
 	DisplayLegend          bool             `json:"displayLegend,omitempty"`
 	DisplayOptionality     bool             `json:"displayOptionality,omitempty"`
 	HasLogic               bool             `json:"has_logic,omitempty"`
 	HasOther               bool             `json:"has_other,omitempty"`
-	ID                     int              `json:"id"`
-	Label                  string           `json:"label"`
+	ID                     int              `json:"id,omitempty"`
+	Label                  string           `json:"label,omitempty"`
 	Layout                 string           `json:"layout,omitempty"`
-	Mandatory              string           `json:"mandatory"`
-	MoreInfo               string           `json:"moreInfo"`
-	Text                   string           `json:"text"`
-	QNo                    string           `json:"q_no"`
+	Mandatory              string           `json:"mandatory,omitempty"`
+	MoreInfo               string           `json:"moreInfo,omitempty"`
+	Text                   string           `json:"text,omitempty"`
+	QNo                    string           `json:"q_no,omitempty"`
 	Children               []InnerContainer `json:"children,omitempty"`
 	Options                []Options        `json:"options,omitempty"`
 	Maxsize                int              `json:"maxsize,omitempty"`
@@ -112,7 +123,7 @@ type InnerContainer struct {
 	NumberPerRow           int              `json:"number_per_row,omitempty"`
 	ShowHeadings           bool             `json:"show_headings,omitempty"`
 	Cols                   int              `json:"cols,omitempty"`
-	Dependencies           string           `json:"dependencies"`
+	Dependencies           string           `json:"dependencies,omitempty"`
 	Format                 string           `json:"format,omitempty"`
 	IsOther                bool             `json:"is_other,omitempty"`
 	Rows                   int              `json:"rows,omitempty"`
@@ -132,20 +143,17 @@ type Options struct {
 	Value           int    `json:"value"`
 }
 
-type TopContainer struct {
-	Class                  string           `json:"class"`
-	DataQuestionVisibility string           `json:"data_question_visibility"`
-	ID                     int              `json:"id"`
-	Label                  string           `json:"label"`
-	Mandatory              string           `json:"mandatory"`
-	Children               []InnerContainer `json:"children,omitempty"`
+type Survey struct {
+	Class         string         `json:"class"`
+	ID            int            `json:"id"`
+	InternalTitle string         `json:"internal_title"`
+	L10N          string         `json:"l10n"`
+	Runs          []Run          `json:"runs"`
+	TopContainer  InnerContainer `json:"top_container"`
 }
 
-type Survey struct {
-	Class         string       `json:"class"`
-	ID            int          `json:"id"`
-	InternalTitle string       `json:"internal_title"`
-	L10N          string       `json:"l10n"`
-	Runs          []Run        `json:"runs"`
-	TopContainer  TopContainer `json:"top_container"`
+type SurveyContainer struct {
+	Survey            *Survey
+	PreviousContainer *InnerContainer
+	CurrentContainer  *InnerContainer
 }
