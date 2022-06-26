@@ -1,4 +1,4 @@
-package Surveys
+package main
 
 import "fmt"
 
@@ -79,109 +79,66 @@ type Run struct {
 	Timezone                    int    `json:"timezone"`
 }
 
+type InnerContainer struct {
+	ShortTitle             string           `json:"short_title,omitempty"`
+	Class                  string           `json:"class"`
+	DataQuestionVisibility string           `json:"data_question_visibility"`
+	Title                  string           `json:"title"`
+	DataIdentifier         string           `json:"data_identifier,omitempty"`
+	Default                string           `json:"default,omitempty"`
+	DisplayLegend          bool             `json:"displayLegend,omitempty"`
+	DisplayOptionality     bool             `json:"displayOptionality,omitempty"`
+	HasLogic               bool             `json:"has_logic,omitempty"`
+	HasOther               bool             `json:"has_other,omitempty"`
+	ID                     int              `json:"id"`
+	Label                  string           `json:"label"`
+	Layout                 string           `json:"layout,omitempty"`
+	Mandatory              string           `json:"mandatory"`
+	MoreInfo               string           `json:"moreInfo"`
+	Text                   string           `json:"text"`
+	QNo                    string           `json:"q_no"`
+	Children               []InnerContainer `json:"children,omitempty"`
+	Options                []Options        `json:"options,omitempty"`
+	Maxsize                int              `json:"maxsize,omitempty"`
+	Size                   int              `json:"size,omitempty"`
+	Validationrule         string           `json:"validationrule,omitempty"`
+	EndDate                string           `json:"end_date,omitempty"`
+	StartDate              string           `json:"start_date,omitempty"`
+	EndTime                string           `json:"end_time,omitempty"`
+	StartTime              string           `json:"start_time,omitempty"`
+	EndDatetime            string           `json:"end_datetime,omitempty"`
+	StartDatetime          string           `json:"start_datetime,omitempty"`
+	NumberPerColumn        int              `json:"number_per_column,omitempty"`
+	NumberPerRow           int              `json:"number_per_row,omitempty"`
+	ShowHeadings           bool             `json:"show_headings,omitempty"`
+	Cols                   int              `json:"cols,omitempty"`
+	Dependencies           string           `json:"dependencies"`
+	Format                 string           `json:"format,omitempty"`
+	IsOther                bool             `json:"is_other,omitempty"`
+	Rows                   int              `json:"rows,omitempty"`
+	ShowHints              bool             `json:"show_hints,omitempty"`
+	MaxNumber              int              `json:"max_number,omitempty"`
+	MinNumber              int              `json:"min_number,omitempty"`
+}
+
+type Options struct {
+	Class           string `json:"class"`
+	ID              int    `json:"id"`
+	IsNotApplicable bool   `json:"is_not_applicable"`
+	IsOther         bool   `json:"is_other"`
+	RouteToPage     string `json:"route_to_page,omitempty"`
+	ScreenToMessage bool   `json:"screen_to_message"`
+	Text            string `json:"text"`
+	Value           int    `json:"value"`
+}
+
 type TopContainer struct {
-	Class                  string `json:"class"`
-	DataQuestionVisibility string `json:"data_question_visibility"`
-	ID                     int    `json:"id"`
-	Label                  string `json:"label"`
-	Mandatory              string `json:"mandatory"`
-	Children               []struct {
-		Class                  string `json:"class"`
-		DataQuestionVisibility string `json:"data_question_visibility"`
-		ID                     int    `json:"id"`
-		Label                  string `json:"label"`
-		Mandatory              string `json:"mandatory"`
-		Title                  string `json:"title"`
-		Children               []struct {
-			Class                  string `json:"class"`
-			DataIdentifier         string `json:"data_identifier,omitempty"`
-			DataQuestionVisibility string `json:"data_question_visibility"`
-			Default                string `json:"default,omitempty"`
-			DisplayLegend          bool   `json:"displayLegend,omitempty"`
-			DisplayOptionality     bool   `json:"displayOptionality,omitempty"`
-			HasLogic               bool   `json:"has_logic,omitempty"`
-			HasOther               bool   `json:"has_other,omitempty"`
-			ID                     int    `json:"id"`
-			Label                  string `json:"label"`
-			Layout                 string `json:"layout,omitempty"`
-			Mandatory              string `json:"mandatory"`
-			MoreInfo               string `json:"moreInfo"`
-			Text                   string `json:"text"`
-			QNo                    string `json:"q_no"`
-			Options                []struct {
-				Class           string `json:"class"`
-				ID              int    `json:"id"`
-				IsNotApplicable bool   `json:"is_not_applicable"`
-				IsOther         bool   `json:"is_other"`
-				RouteToPage     string `json:"route_to_page,omitempty"`
-				ScreenToMessage bool   `json:"screen_to_message"`
-				Text            string `json:"text"`
-				Value           int    `json:"value"`
-			} `json:"options,omitempty"`
-			Children []struct {
-				Class                  string `json:"class"`
-				Cols                   int    `json:"cols,omitempty"`
-				DataQuestionVisibility string `json:"data_question_visibility"`
-				Dependencies           string `json:"dependencies"`
-				Format                 string `json:"format,omitempty"`
-				ID                     int    `json:"id"`
-				IsOther                bool   `json:"is_other,omitempty"`
-				Label                  string `json:"label"`
-				Mandatory              string `json:"mandatory"`
-				Rows                   int    `json:"rows,omitempty"`
-				ShowHints              bool   `json:"show_hints,omitempty"`
-				Text                   string `json:"text"`
-				QNo                    string `json:"q_no"`
-				Default                string `json:"default,omitempty"`
-				DisplayLegend          bool   `json:"displayLegend,omitempty"`
-				DisplayOptionality     bool   `json:"displayOptionality,omitempty"`
-				HasOther               bool   `json:"has_other,omitempty"`
-				Layout                 string `json:"layout,omitempty"`
-				MaxNumber              int    `json:"max_number,omitempty"`
-				MinNumber              int    `json:"min_number,omitempty"`
-				MoreInfo               string `json:"moreInfo,omitempty"`
-				Options                []struct {
-					Class           string `json:"class"`
-					ID              int    `json:"id"`
-					IsNotApplicable bool   `json:"is_not_applicable"`
-					IsOther         bool   `json:"is_other"`
-					ScreenToMessage bool   `json:"screen_to_message"`
-					Text            string `json:"text"`
-					Value           int    `json:"value"`
-				} `json:"options,omitempty"`
-				Children []struct {
-					Class                  string `json:"class"`
-					DataQuestionVisibility string `json:"data_question_visibility"`
-					Dependencies           string `json:"dependencies"`
-					Format                 string `json:"format"`
-					ID                     int    `json:"id"`
-					IsOther                bool   `json:"is_other"`
-					Label                  string `json:"label"`
-					Mandatory              string `json:"mandatory"`
-					ShowHints              bool   `json:"show_hints"`
-					Size                   int    `json:"size"`
-					Text                   string `json:"text"`
-					QNo                    string `json:"q_no"`
-				} `json:"children,omitempty"`
-				DataIdentifier  string `json:"data_identifier,omitempty"`
-				HasLogic        bool   `json:"has_logic,omitempty"`
-				ShortTitle      string `json:"short_title,omitempty"`
-				Maxsize         int    `json:"maxsize,omitempty"`
-				Size            int    `json:"size,omitempty"`
-				Validationrule  string `json:"validationrule,omitempty"`
-				EndDate         string `json:"end_date,omitempty"`
-				StartDate       string `json:"start_date,omitempty"`
-				EndTime         string `json:"end_time,omitempty"`
-				StartTime       string `json:"start_time,omitempty"`
-				EndDatetime     string `json:"end_datetime,omitempty"`
-				StartDatetime   string `json:"start_datetime,omitempty"`
-				NumberPerColumn int    `json:"number_per_column,omitempty"`
-				NumberPerRow    int    `json:"number_per_row,omitempty"`
-				ShowHeadings    bool   `json:"show_headings,omitempty"`
-			} `json:"children"`
-			ShortTitle string `json:"short_title,omitempty"`
-		} `json:"children,omitempty"`
-	} `json:"children"`
+	Class                  string           `json:"class"`
+	DataQuestionVisibility string           `json:"data_question_visibility"`
+	ID                     int              `json:"id"`
+	Label                  string           `json:"label"`
+	Mandatory              string           `json:"mandatory"`
+	Children               []InnerContainer `json:"children,omitempty"`
 }
 
 type Survey struct {
