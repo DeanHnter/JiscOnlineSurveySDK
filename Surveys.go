@@ -1,4 +1,26 @@
-package JiscOnlineSurveySDK
+package Surveys
+
+type Classes string
+
+const (
+	SurveyClass     Classes = "Survey"
+	SurveyRun               = "SurveyRun"
+	Container               = "Container"
+	Page                    = "Page"
+	MultipleChoice          = "MultipleChoice"
+	SelectionOption         = "SelectionOption"
+	FreeText                = "FreeText"
+	MultipleAnswer          = "MultipleAnswer"
+	SelectionList           = "SelectionList"
+	DatePicker              = "DatePicker"
+	TimePicker              = "TimePicker"
+	DateTimePicker          = "DateTimePicker"
+	Scale                   = "Scale"
+	ScaleRow                = "ScaleRow"
+	Grid                    = "Grid"
+	GridRow                 = "GridRow"
+	Note                    = "Note"
+)
 
 type Survey struct {
 	Class         string `json:"class"`
