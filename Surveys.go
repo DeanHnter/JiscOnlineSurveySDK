@@ -1,5 +1,7 @@
 package Surveys
 
+import "fmt"
+
 type StructureClass string
 
 const (
@@ -22,11 +24,25 @@ const (
 	Note                           = "Note"
 )
 
+func (sc StructureClass) String() string {
+	switch sc {
+	default:
+		return fmt.Sprintf("%s", string(sc))
+	}
+}
+
 type LanguageClass string
 
 const (
 	English LanguageClass = "en_GB"
 )
+
+func (lc LanguageClass) String() string {
+	switch lc {
+	default:
+		return fmt.Sprintf("%s", string(lc))
+	}
+}
 
 type Run struct {
 	Class                       string `json:"class"`
