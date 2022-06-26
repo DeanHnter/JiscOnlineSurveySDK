@@ -1,4 +1,4 @@
-package Surveys
+package JiscOnlineSurveySDK
 
 type Survey struct {
 	Class         string `json:"class"`
