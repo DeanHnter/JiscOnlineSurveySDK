@@ -1,1 +1,1 @@
-module github.com/DeanHnter/JiscOnlineSurveySDK/
+module github.com/DeanHnter/JiscOnlineSurveySDK
