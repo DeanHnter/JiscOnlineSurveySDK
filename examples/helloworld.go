@@ -13,5 +13,5 @@ func main() {
 	survey.AddPage("Final page", Surveys.Show)
 	json := survey.ToJson()
 	fmt.Println(json)
-	survey.Save("/Users/dh/Downloads/survey.json", json)
+	survey.Save("helloworld-survey.json", json)
 }
