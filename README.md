@@ -6,9 +6,14 @@ This is an unofficial and incomplete development kit for onlinesurveys.ac.uk I d
 
 Go supports modules since v1.11+. This package uses go-modules. Go modules require that GOPATH is empty =>  `unset GOTPATH`** 
 
+## Installing the package with go
+
+    go get github.com/DeanHnter/JiscOnlineSurveySDK
+
 # Example
 
     package main
+    
     import (
     "fmt"
     Surveys "github.com/DeanHnter/JiscOnlineSurveySDK"
