@@ -1,4 +1,55 @@
 # JiscOnlineSurveySDK
 
-## Go supports modules since v1.11+.
-This package uses go-modules. Go modules require that GOPATH is empty => `unset GOTPATH`**
+This is an unofficial and incomplete development kit for onlinesurveys.ac.uk I developed to complete my own task and therefor is missing the majority of implementations for each json class. See the to-do list.
+
+# Installation
+
+Go supports modules since v1.11+. This package uses go-modules. Go modules require that GOPATH is empty =>  `unset GOTPATH`** 
+
+# Example
+
+    package main
+    import (
+    "fmt"
+    Surveys "github.com/DeanHnter/JiscOnlineSurveySDK"
+    )
+    
+    func main() {
+    survey := Surveys.CreateSurvey("Helloworld", Surveys.English)
+    page1 := survey.AddPage("Page 1", Surveys.Show)
+    page1.AddNote("Hello world!", Surveys.Show)
+    survey.AddPage("Final page", Surveys.Show)
+    json := survey.ToJson()
+    fmt.Println(json)
+    survey.Save("helloworld-survey.json", json)
+    }
+
+# To-DO status list
+
+1. Page - Complete
+
+2. MultipleChoice - Complete
+
+3. SelectionOption - Complete
+
+4. FreeText - Incomplete
+
+5. MultipleAnswer - Incomplete
+
+6. SelectionList - Incomplete
+
+7. DatePicker - Incomplete
+
+8. TimePicker - Incomplete
+
+9. DateTimePicker - Incomplete
+
+10. Scale - Complete
+
+11. ScaleRow - Complete
+
+13. Grid - Incomplete
+
+14. GridRow - Incomplete
+
+12. Note - Complete
