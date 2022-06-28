@@ -2,6 +2,9 @@
 
 This is an unofficial and incomplete development kit for onlinesurveys.ac.uk I developed to complete my own task and therefor is missing the majority of implementations for each json class. See the to-do list.
 
+![screenshot](Screenshot.png "screenshot")
+
+
 # Installation
 
 Go supports modules since v1.11+. This package uses go-modules. Go modules require that GOPATH is empty =>  `unset GOTPATH`** 
