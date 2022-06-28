@@ -1,8 +1,8 @@
-# JiscOnlineSurveySDK
+# JiscOnlineSurvey SDK
 
 This is an unofficial and incomplete development kit for https://onlinesurveys.ac.uk. This was created simply to complete my own task and therefor is missing the majority of implementations for each json class currently. See the to-do list for a feature list.
 
-![screenshot](Screenshot.png "screenshot")
+![screenshot](Screenshot2.png "screenshot")
 
 
 # Installation
