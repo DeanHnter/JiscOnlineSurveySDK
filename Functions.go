@@ -151,6 +151,10 @@ func (innerchild *PageContainer) AddScale(survey *Survey, text string, data_ques
 	return scale
 }
 
+func (innerchild *InnerContainer) AppendLabel(value string){
+	innerchild.Label += value
+}
+
 func (innerchild *InnerContainer) AddScaleRow(survey *Survey, text string, data_question_visibility Visibility, mandatory JsonBool) *InnerContainer {
 	if innerchild.Class == Scale {
 		id, label := CreateID()
