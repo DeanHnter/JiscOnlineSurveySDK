@@ -27,11 +27,14 @@ func CreateSurvey(internal_title string, language LanguageClass) Survey {
 	if len(internal_title) > 25 {
 		panic("Survey title too long!")
 	}
+	internal_title = strings.ToLower(internal_title)
+	internal_title = strings.ReplaceAll(internal_title, " ", "-")
 	survey := Survey{Class: SurveyClass.String(), ID: rand.Intn(100000000), L10N: language.String(), InternalTitle: internal_title}
 	survey.AddRun(internal_title)
 	survey.AddTopContainer()
 	return survey
 }
+
 
 func (survey *Survey) AddRun(external_title string) {
 	//uses defaults, should be parameterized in the future
