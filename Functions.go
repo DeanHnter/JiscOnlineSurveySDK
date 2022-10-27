@@ -81,7 +81,7 @@ func (survey *Survey) AddPage(title string, data_question_visibility Visibility)
 }
 
 func CreateID() (int, string) {
-	id := rand.Intn(1000000)
+	id := rand.Intn(100000)
 	label := "b" + strconv.Itoa(id)
 	return id, label
 }
