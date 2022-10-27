@@ -203,7 +203,6 @@ func (innerchild *InnerContainer) AddMultipleChoice(survey *Survey, text string,
 	}
 	if innerchild.Class == ScaleRow ||  innerchild.Class == GridRow{
 		id, label := CreateID()
-		survey.SurveyQNO++
 		multianswer := &InnerContainer{Class: MultipleChoice, Text: text, QNo: strconv.Itoa(survey.SurveyQNO) + "." + strconv.Itoa(len(innerchild.Children)+1) + ".i", Layout: layout.String(), HasOther: &has_other, ShowHints: &show_hints, Label: label, ID: id, Mandatory: mandatory.JBool()}
 		innerchild.Children = append(innerchild.Children, multianswer)
 		return multianswer
