@@ -156,7 +156,6 @@ func (innerchild *PageContainer) AddGrid(survey *Survey, text string, data_quest
 	survey.SurveyQNO++
 	grid := &InnerContainer{Class: Grid, Text: text, QNo: strconv.Itoa(survey.SurveyQNO), DisplayOptionality: &display_optionality, Label: label, MaxNumber: max_number, MinNumber: min_number, NumberPerColumn: number_per_column, NumberPerRow: number_per_row, ShowHeadings: &show_headings, ShowHints: &show_hints, ID: id, Mandatory: mandatory.JBool(), DataQuestionVisibility: data_question_visibility.String()}
 	innerchild.Page.Children = append(innerchild.Page.Children, grid)
-	survey.SurveyQNO++
 	return grid
 }
 
