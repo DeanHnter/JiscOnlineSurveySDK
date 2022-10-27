@@ -151,6 +151,15 @@ func (innerchild *PageContainer) AddScale(survey *Survey, text string, data_ques
 	return scale
 }
 
+func (innerchild *PageContainer) AddGrid(survey *Survey, text string, data_question_visibility Visibility, display_optionality bool, mandatory JsonBool, max_number int, min_number int, number_per_column int, number_per_row int, show_headings bool, show_hints bool) *InnerContainer {
+	id, label := CreateID()
+	survey.SurveyQNO++
+	grid := &InnerContainer{Class: Grid, Text: text, QNo: strconv.Itoa(survey.SurveyQNO), DisplayOptionality: &display_optionality, Label: label, MaxNumber: max_number, MinNumber: min_number, NumberPerColumn: number_per_column, NumberPerRow: number_per_row, ShowHeadings: &show_headings, ShowHints: &show_hints, ID: id, Mandatory: mandatory.JBool(), DataQuestionVisibility: data_question_visibility.String()}
+	innerchild.Page.Children = append(innerchild.Page.Children, scale)
+	survey.SurveyQNO++
+	return grid
+}
+
 func (innerchild *InnerContainer) AppendLabel(value string){
 	innerchild.Label += value
 }
@@ -161,6 +170,16 @@ func (innerchild *InnerContainer) AddScaleRow(survey *Survey, text string, data_
 		scalerow := &InnerContainer{Class: ScaleRow, Text: text, QNo: strconv.Itoa(survey.SurveyQNO) + "." + strconv.Itoa(len(innerchild.Children)+1), Label: label, ID: id, Mandatory: mandatory.JBool(), DataQuestionVisibility: data_question_visibility.String()}
 		innerchild.Children = append(innerchild.Children, scalerow)
 		return scalerow
+	}
+	return nil
+}
+
+func (innerchild *InnerContainer) AddGridRow(survey *Survey, text string, data_question_visibility Visibility, mandatory JsonBool) *InnerContainer {
+	if innerchild.Class == Grid {
+		id, label := CreateID()
+		gridrow := &InnerContainer{Class: GridRow, Text: text, QNo: strconv.Itoa(survey.SurveyQNO) + "." + strconv.Itoa(len(innerchild.Children)+1), Label: label, ID: id, Mandatory: mandatory.JBool(), DataQuestionVisibility: data_question_visibility.String()}
+		innerchild.Children = append(innerchild.Children, gridrow)
+		return gridrow
 	}
 	return nil
 }
