@@ -101,6 +101,14 @@ func (innerchild *PageContainer) AddMultipleChoice(survey *Survey, text string, 
 	return multiplechoice
 }
 
+func (innerchild *PageContainer) AddSelectionList(survey *Survey, text string, defaulttxt string, data_question_visibility Visibility, displayOptionality bool, displayLegend bool, haslogic bool, has_other bool, layout SurveyLayout, mandatory JsonBool) *InnerContainer {
+	id, label := CreateID()
+	survey.SurveyQNO++
+	selectionlist := &InnerContainer{Class: SelectionList, Text: text, Default: defaulttxt, QNo: strconv.Itoa(survey.SurveyQNO), DisplayLegend: &displayLegend, Layout: layout.String(), DisplayOptionality: &displayOptionality, HasLogic: &haslogic, HasOther: &has_other, Label: label, ID: id, Mandatory: mandatory.JBool(), DataQuestionVisibility: data_question_visibility.String()}
+	innerchild.Page.Children = append(innerchild.Page.Children, selectionlist)
+	return selectionlist
+}
+
 func (survey *Survey) ToJson() string {
 	survey.SurveyQNO = 0 //remove temporary variable
 	b, err := json.MarshalIndent(survey, "", "\t")
