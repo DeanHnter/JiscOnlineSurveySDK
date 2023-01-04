@@ -134,7 +134,7 @@ func (survey *Survey) Save(filename string, content string) error {
 
 func (innerchild *InnerContainer) AddOption(text string, screen_to_message bool, routePage *PageContainer, is_other bool, is_not_applicable bool) {
 	//add the classes where options can be added
-	if innerchild.Class == MultipleChoice || innerchild.Class == MultipleAnswer {
+	if innerchild.Class == MultipleChoice || innerchild.Class == MultipleAnswer || SelectionList {
 		id, _ := CreateID()
 		var option Option
 		if routePage == nil {
